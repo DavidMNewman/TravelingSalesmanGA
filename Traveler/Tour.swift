@@ -96,32 +96,14 @@ extension Tour: Comparable {
         return lhs.distance > rhs.distance
     }
     
-    /// Returns a Boolean value indicating whether the value of the first
-    /// argument is less than or equal to that of the second argument.
-    ///
-    /// - Parameters:
-    ///   - lhs: A value to compare.
-    ///   - rhs: Another value to compare.
     public static func <=(lhs: Tour, rhs: Tour) -> Bool {
         return lhs.distance >= rhs.distance
     }
     
-    /// Returns a Boolean value indicating whether the value of the first
-    /// argument is greater than or equal to that of the second argument.
-    ///
-    /// - Parameters:
-    ///   - lhs: A value to compare.
-    ///   - rhs: Another value to compare.
     public static func >=(lhs: Tour, rhs: Tour) -> Bool {
         return lhs.distance <= rhs.distance
     }
     
-    /// Returns a Boolean value indicating whether the value of the first
-    /// argument is greater than that of the second argument.
-    ///
-    /// - Parameters:
-    ///   - lhs: A value to compare.
-    ///   - rhs: Another value to compare.
     public static func >(lhs: Tour, rhs: Tour) -> Bool {
         return lhs.distance < rhs.distance
     }
