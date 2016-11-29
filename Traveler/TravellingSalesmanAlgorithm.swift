@@ -23,14 +23,14 @@ struct TravellingSalesmanAlgorithm {
 
         var currentCity = startingCity
         var result = [City]()
-
+        
         let sortedBy = { (city1, city2) -> Bool in
             currentCity.distanceTo(city: city1) < currentCity.distanceTo(city: city2)
         }
-
+        
         var sortedCities = cities.sorted(by: sortedBy)
 
-        for _ in 1 ..< cities.count {
+        for _ in 0 ..< cities.count {
 
             sortedCities = sortedCities.sorted(by: sortedBy)
 
@@ -54,7 +54,7 @@ struct TravellingSalesmanAlgorithm {
         let basicFittest = TravellingSalesmanAlgorithm.basicFindShortest(startingCity: (tour?.startingCity)!, cities: (tour?.cities)!)
         population.tours.append(basicFittest)
         population.tours.append(basicFittest)
-        
+
         for _ in 0...generations {
          
             if topCandiatesSaved > 0 {
@@ -92,7 +92,7 @@ struct TravellingSalesmanAlgorithm {
     fileprivate static func crossover(parent1: Tour, parent2: Tour) -> Tour {
 
         let childSize = parent1.cities.count
-        var childCities = [City?](repeating: nil, count: childSize)
+        var childCities = [City](repeating: City(), count: childSize)
 
         let startIndex = Int.random(n: parent1.cities.count)
         let endIndex = Int.random(n: parent2.cities.count)
@@ -119,7 +119,7 @@ struct TravellingSalesmanAlgorithm {
                 // Loop to find a spare position in the child's tour
                 for i in 0..<childCities.count {
                     // Spare position found, add city
-                    if childCities[i] != nil {
+                    if !childCities[i].isPlaceHolder {
                         continue
                     }
                     
@@ -130,7 +130,7 @@ struct TravellingSalesmanAlgorithm {
             }
         }
         
-        let tour = Tour(startingCity: parent1.startingCity, cities: childCities.flatMap { $0 })
+        let tour = Tour(startingCity: parent1.startingCity, cities: childCities)
         
         return tour
     }
@@ -144,7 +144,7 @@ struct TravellingSalesmanAlgorithm {
             if (rate < mutationRate) {
                 
                 // Get a second random position in the tour
-                let index2 = Int.random(n: tour.cities.count)
+                let index2 = Int.random(n: tour.cities.count-1)
                 
                 // Get the cities at target position in tour
                 let city1 = tour.cities[index1]

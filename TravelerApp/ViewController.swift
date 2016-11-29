@@ -15,6 +15,11 @@ class ViewController: NSViewController {
     var basicFittest: Tour?
     var timeSpentCalculating: Double = Double(0)
     
+    var generations = 25
+ 
+    @IBOutlet weak var generationsField: NSTextField!
+    
+    
     @IBOutlet weak var textField: NSTextField!
     
     override func viewDidLoad() {
@@ -39,10 +44,15 @@ class ViewController: NSViewController {
 
     @IBAction func calculate(_ sender: Any) {
         
-        let startTime = CFAbsoluteTimeGetCurrent()
+//        guard let generations = generationsField.integerValue else {
+//            return
+//        }
 
+        let generations = generationsField.integerValue
         
-        TravellingSalesmanAlgorithm.evolvePopulation(population: &population!, generations: 100)
+        let startTime = CFAbsoluteTimeGetCurrent()
+        
+        TravellingSalesmanAlgorithm.evolvePopulation(population: &population!, generations: generations)
         
         print("evolved!")
         guard let fittest = population?.getFittest() else {
@@ -57,9 +67,10 @@ class ViewController: NSViewController {
 
         timeSpentCalculating+=timeElapsed
         
-        let output = "Basic Algorithm Fittest: \(basicFittest)\n Genetic Algorithm \(fittest)\n Improvement: \((basicFittest.distance/fittest.distance) * 100 - 100)%\n Time: \(timeElapsed) seconds\n Total Time: \(timeSpentCalculating)"
+        let output = "After \(generations) Generations\nImprovement: \((basicFittest.distance/fittest.distance) * 100 - 100)%\nTime: \(timeElapsed) seconds\nTour \(fittest)"
         
         print(output)
+        print("Total Time: \(timeSpentCalculating)")
         
         textField.stringValue = output
     }

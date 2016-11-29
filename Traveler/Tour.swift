@@ -11,7 +11,10 @@ class Tour: CustomStringConvertible {
     var startingCity: City
     var cities = [City]()
     var description: String  {
-        return "Distance: \(self.distance)\n    \(cities)"
+        var route = [startingCity]
+        route.append(contentsOf: cities)
+        route.append(startingCity)
+        return "Distance: \(self.distance)\n\(route)"
     }
     
     var fitness: Double {
@@ -33,7 +36,7 @@ class Tour: CustomStringConvertible {
             result+=returnTrip
         }
         
-        result*=111
+        result*=98
         
         return Double(result)
     }()
@@ -83,34 +86,43 @@ class Tour: CustomStringConvertible {
     }
 }
 
-extension Tour {
+extension Tour: Comparable {
     
+    public static func ==(lhs: Tour, rhs: Tour) -> Bool {
+        return lhs.description == rhs.description
+    }
+
+    public static func <(lhs: Tour, rhs: Tour) -> Bool {
+        return lhs.distance > rhs.distance
+    }
     
+    /// Returns a Boolean value indicating whether the value of the first
+    /// argument is less than or equal to that of the second argument.
+    ///
+    /// - Parameters:
+    ///   - lhs: A value to compare.
+    ///   - rhs: Another value to compare.
+    public static func <=(lhs: Tour, rhs: Tour) -> Bool {
+        return lhs.distance >= rhs.distance
+    }
     
-    func populate() {
-        var cities = [City]()
-        
-        cities.append(City(name:"Boston", latitude: 42, longitude: 71))
-        cities.append(City(name:"Buffalo", latitude: 42, longitude: 78))
-        cities.append(City(name:"Charlotte", latitude: 35, longitude: 80))
-        cities.append(City(name:"Cleveland", latitude: 41, longitude: 81))
-        cities.append(City(name:"Dallas", latitude: 32, longitude: 96))
-        cities.append(City(name:"Fargo", latitude: 46, longitude: 96))
-        cities.append(City(name:"Denver", latitude: 39, longitude: 105))
-        cities.append(City(name:"Fresno", latitude: 36, longitude: 119))
-        cities.append(City(name:"Jacksonville", latitude: 30, longitude: 81))
-        cities.append(City(name:"Las Vegas", latitude: 36, longitude: 115))
-        cities.append(City(name:"Los Angeles", latitude: 34, longitude: 118))
-        cities.append(City(name:"Minneapolis", latitude: 44, longitude: 93))
-        cities.append(City(name:"New York", latitude: 40, longitude: 73))
-        cities.append(City(name:"Quebec", latitude: 46, longitude: 71))
-        cities.append(City(name:"Salt Lake City", latitude: 40, longitude: 111))
-        cities.append(City(name:"San Francisco", latitude: 37, longitude: 122))
-        cities.append(City(name:"Toronto", latitude: 43, longitude: 40))
-        cities.append(City(name:"Vancouver", latitude: 49, longitude: 123))
-        cities.append(City(name:"Washington D.C.", latitude: 38, longitude: 77))
-        cities.append(City(name:"Wichita", latitude: 37, longitude: 97))
-        
-        self.cities = cities.shuffle()
+    /// Returns a Boolean value indicating whether the value of the first
+    /// argument is greater than or equal to that of the second argument.
+    ///
+    /// - Parameters:
+    ///   - lhs: A value to compare.
+    ///   - rhs: Another value to compare.
+    public static func >=(lhs: Tour, rhs: Tour) -> Bool {
+        return lhs.distance <= rhs.distance
+    }
+    
+    /// Returns a Boolean value indicating whether the value of the first
+    /// argument is greater than that of the second argument.
+    ///
+    /// - Parameters:
+    ///   - lhs: A value to compare.
+    ///   - rhs: Another value to compare.
+    public static func >(lhs: Tour, rhs: Tour) -> Bool {
+        return lhs.distance < rhs.distance
     }
 }
