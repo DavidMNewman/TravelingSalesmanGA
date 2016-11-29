@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F010B03F1DD62E9A00C2900B"
-               BuildableName = "Traveler"
-               BlueprintName = "Traveler"
+               BlueprintIdentifier = "F08C71D11DEC9464008075B5"
+               BuildableName = "TravelerApp.app"
+               BlueprintName = "TravelerApp"
                ReferencedContainer = "container:Traveler.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F010B03F1DD62E9A00C2900B"
-            BuildableName = "Traveler"
-            BlueprintName = "Traveler"
+            BlueprintIdentifier = "F08C71D11DEC9464008075B5"
+            BuildableName = "TravelerApp.app"
+            BlueprintName = "TravelerApp"
             ReferencedContainer = "container:Traveler.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F010B03F1DD62E9A00C2900B"
-            BuildableName = "Traveler"
-            BlueprintName = "Traveler"
+            BlueprintIdentifier = "F08C71D11DEC9464008075B5"
+            BuildableName = "TravelerApp.app"
+            BlueprintName = "TravelerApp"
             ReferencedContainer = "container:Traveler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F010B03F1DD62E9A00C2900B"
-            BuildableName = "Traveler"
-            BlueprintName = "Traveler"
+            BlueprintIdentifier = "F08C71D11DEC9464008075B5"
+            BuildableName = "TravelerApp.app"
+            BlueprintName = "TravelerApp"
             ReferencedContainer = "container:Traveler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
