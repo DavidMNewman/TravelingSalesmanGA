@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     let tour = Tour(mock: true)
     var population: Population?
     var basicFittest: Tour?
+    var timeSpentCalculating: Double = Double(0)
     
     @IBOutlet weak var textField: NSTextField!
     
@@ -22,6 +23,8 @@ class ViewController: NSViewController {
             population = try Population(startingCity: tour.startingCity, cities: tour.cities, populationCount: 100)
             
             basicFittest = TravellingSalesmanAlgorithm.basicFindShortest(startingCity: (tour.startingCity), cities: (tour.cities))
+            
+            print("Fittest: \(population!.getFittest())\n  Basic Algorithm \(basicFittest)")
         } catch { error
             print("Failed to create population, error: \(error.localizedDescription)")
         }
@@ -38,7 +41,6 @@ class ViewController: NSViewController {
         
         let startTime = CFAbsoluteTimeGetCurrent()
 
-        print("Fittest: \(population!.getFittest())\n  Basic Algorithm Fittest:   \(basicFittest)")
         
         TravellingSalesmanAlgorithm.evolvePopulation(population: &population!, generations: 100)
         
@@ -53,7 +55,9 @@ class ViewController: NSViewController {
         
         let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
 
-        let output = "Basic Algorithm Fittest: \(basicFittest)\n Genetic Algorithm Fittest:\(fittest)\n Improvement: \((basicFittest.distance/fittest.distance) * 100 - 100)%\n Time: \(timeElapsed) seconds"
+        timeSpentCalculating+=timeElapsed
+        
+        let output = "Basic Algorithm Fittest: \(basicFittest)\n Genetic Algorithm \(fittest)\n Improvement: \((basicFittest.distance/fittest.distance) * 100 - 100)%\n Time: \(timeElapsed) seconds\n Total Time: \(timeSpentCalculating)"
         
         print(output)
         

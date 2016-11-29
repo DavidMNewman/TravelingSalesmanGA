@@ -86,10 +86,6 @@ struct TravellingSalesmanAlgorithm {
             for i in topCandiatesSaved..<population.tours.count {
                 mutate(tour: &population.tours[i])
             }
-            
-//            if index%1 == 0 {
-//                print("Fittest: \(population.getFittest()?.distance)")
-//            }
         }
     }
 
