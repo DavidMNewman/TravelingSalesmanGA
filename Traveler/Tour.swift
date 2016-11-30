@@ -36,13 +36,12 @@ class Tour: CustomStringConvertible {
             result+=returnTrip
         }
         
-        result*=98
+        result*=98  // Rough average for converting coordinate points to kilometers
         
         return Double(result)
     }()
     
     init(startingCity: City, cities: [City]) {
-        
         self.startingCity = startingCity
         self.cities = cities
     }
@@ -80,9 +79,6 @@ class Tour: CustomStringConvertible {
         cities = cities.shuffle()
         
         self.init(startingCity: City(name:"Atlanta", latitude: 33, longitude: -84), cities: cities)
-
-        
-
     }
 }
 
