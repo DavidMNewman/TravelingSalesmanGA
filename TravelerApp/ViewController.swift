@@ -43,10 +43,6 @@ class ViewController: NSViewController {
     }
 
     @IBAction func calculate(_ sender: Any) {
-        
-//        guard let generations = generationsField.integerValue else {
-//            return
-//        }
 
         let generations = generationsField.integerValue
         
